@@ -28,16 +28,16 @@ export function LikertQuestion({
   readOnly = false,
 }: LikertQuestionProps) {
   return (
-    <fieldset className="rounded-lg border border-border bg-card p-4">
+    <fieldset className="rounded-lg border border-border bg-card p-6 sm:p-10">
       <legend className="sr-only">{statement}</legend>
-      <p className="mb-4 text-base font-medium text-card-foreground sm:text-lg">
+      <p className="mb-6 text-lg font-medium text-card-foreground sm:mb-8 sm:text-2xl">
         {statement}
       </p>
       <RadioGroup
         value={value ?? null}
         onValueChange={(v) => onChange?.(Number(v) as LikertValue)}
         disabled={readOnly}
-        className="grid grid-cols-1 gap-2 sm:grid-cols-5"
+        className="grid grid-cols-1 gap-3 sm:grid-cols-5"
       >
         {options.map((opt) => {
           const selected = value === opt.value;
@@ -45,7 +45,7 @@ export function LikertQuestion({
             <label
               key={opt.value}
               className={cn(
-                "flex cursor-pointer items-center gap-2.5 rounded-md border p-3 text-sm transition-colors sm:flex-col sm:gap-1.5 sm:p-2.5 sm:text-center sm:text-xs",
+                "flex cursor-pointer items-center gap-2.5 rounded-md border p-4 text-sm transition-colors sm:flex-col sm:gap-2 sm:p-5 sm:text-center sm:text-sm",
                 selected
                   ? "border-primary bg-primary/10 font-semibold text-foreground ring-1 ring-primary"
                   : "border-border text-muted-foreground hover:bg-muted hover:text-foreground",

@@ -53,7 +53,7 @@ export function MajorCard({ match, rank }: MajorCardProps) {
         )}
         <p className="text-sm text-muted-foreground">{major.description}</p>
         <p className="text-xs text-muted-foreground">
-          Typical starting salary:{" "}
+          Median salary:{" "}
           <span className="font-medium text-foreground">
             ${major.salary.toLocaleString()}
           </span>

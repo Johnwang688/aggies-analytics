@@ -72,7 +72,7 @@ export function MajorMatcher({ questions, majors }: MajorMatcherProps) {
     isSalaryStep || (!!currentQuestion && answers[currentQuestion.id] !== undefined);
 
   return (
-    <div ref={topRef} className="mx-auto w-full max-w-2xl scroll-mt-6 space-y-5">
+    <div ref={topRef} className="w-full scroll-mt-6 space-y-8">
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>
@@ -106,7 +106,7 @@ export function MajorMatcher({ questions, majors }: MajorMatcherProps) {
           <div>
             <h2 className="text-xl font-semibold">Preferred minimum salary</h2>
             <p className="text-sm text-muted-foreground">
-              We&apos;ll favor majors whose typical starting salary meets your goal.
+              We&apos;ll favor majors whose median salary meets your goal.
             </p>
           </div>
           <SalaryStep value={minSalary} onChange={setMinSalary} />

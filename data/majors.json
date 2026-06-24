@@ -1,136 +1,200 @@
 [
-    
     {
       "name": "Computer Science",
-      "description": "Build the software, algorithms, and intelligent systems that power modern technology. Computer science students study programming, data structures, algorithms, operating systems, and computing theory — one of the highest-demand fields in the job market.",
-      "career_paths": [
-        "software-dev",
-        "data-ml",
-        "research-academia"
-      ],
-      "skills": [
-        "programming",
-        "math",
-        "data-analysis",
-        "problem-solving"
-      ],
-      "problem_areas": [
-        "algorithms-software",
-        "data-patterns",
-        "automation-control"
-      ],
-      "interests": [
-        "technology-computers",
-        "data-statistics",
-        "robotics"
-      ],
-      "salary": 133000
+      "description": "Build the software, algorithms, and intelligent systems that power modern technology. Computer science covers programming, data structures, algorithms, operating systems, and computing theory — one of the highest-demand fields in the job market.",
+      "career_paths": ["software-dev", "data-ml", "research-academia"],
+      "skills": ["programming", "math", "data-analysis", "problem-solving"],
+      "problem_areas": ["algorithms-software", "data-patterns", "automation-control"],
+      "interests": ["technology-computers", "data-statistics", "robotics"],
+      "salary": 132000
     },
     {
       "name": "Data Engineering",
-      "description": "Turn raw data into actionable insight using statistics, machine learning, and computational tools. Data science combines programming, math, and domain knowledge to find patterns and build models that drive real-world decisions — a fast-growing field for analytically minded students.",
-      "career_paths": [
-        "data-ml",
-        "software-dev",
-        "research-academia"
-      ],
-      "skills": [
-        "programming",
-        "math",
-        "data-analysis",
-        "problem-solving"
-      ],
-      "problem_areas": [
-        "data-patterns",
-        "algorithms-software"
-      ],
-      "interests": [
-        "data-statistics",
-        "technology-computers"
-      ],
-      "salary": 113000
+      "description": "Turn raw data into actionable insight using statistics, machine learning, and computational tools. Data engineering combines programming, math, and domain knowledge to find patterns and build the pipelines and models that drive real-world decisions — a fast-growing field for analytically minded students.",
+      "career_paths": ["data-ml", "software-dev", "research-academia"],
+      "skills": ["programming", "math", "data-analysis", "problem-solving"],
+      "problem_areas": ["data-patterns", "algorithms-software"],
+      "interests": ["data-statistics", "technology-computers"],
+      "salary": 126000
     },
     {
       "name": "Computer Engineering",
       "description": "Bridge hardware and software to design complete computing systems — from embedded chips to data centers. Computer engineering covers circuits, computer architecture, operating systems, and hardware-software integration for students who want to build both the physical and digital layers of modern devices.",
-      "career_paths": [
-        "hardware-dev",
-        "software-dev",
-        "embedded-systems",
-        "research-academia"
-      ],
-      "skills": [
-        "programming",
-        "math",
-        "electrical-engineering",
-        "problem-solving",
-        "systems-design"
-      ],
-      "problem_areas": [
-        "algorithms-software",
-        "hardware-systems",
-        "automation-control"
-      ],
-      "interests": [
-        "technology-computers",
-        "robotics",
-        "electronics"
-      ],
+      "career_paths": ["hardware-dev", "software-dev", "embedded-systems", "research-academia"],
+      "skills": ["programming", "math", "electrical-engineering", "problem-solving", "systems-design"],
+      "problem_areas": ["algorithms-software", "hardware-systems", "automation-control"],
+      "interests": ["technology-computers", "robotics", "electronics"],
+      "salary": 138000
+    },
+    {
+      "name": "Electrical Engineering",
+      "description": "Work with circuits, power systems, signals, and electronics that run today's devices and grids. Electrical engineering combines math, physics, and programming to design the electrical backbone of modern life.",
+      "career_paths": ["power-energy", "robotics-automation", "research-academia"],
+      "skills": ["circuits", "math", "physics", "programming", "problem-solving"],
+      "problem_areas": ["electrical-systems", "automation-control"],
+      "interests": ["electronics-gadgets", "energy", "robotics", "technology-computers"],
+      "salary": 107000
+    },
+    {
+      "name": "Mechanical Engineering",
+      "description": "Design and build everything that moves — engines, robots, machines, and vehicles. One of the largest and most versatile engineering fields, blending physics, design, and hands-on problem solving.",
+      "career_paths": ["manufacturing", "robotics-automation", "aerospace-defense"],
+      "skills": ["physics", "math", "design-cad", "hands-on", "problem-solving"],
+      "problem_areas": ["machines-mechanical", "automation-control"],
+      "interests": ["cars-machines", "robotics", "energy"],
+      "salary": 100000
+    },
+    {
+      "name": "Aerospace Engineering",
+      "description": "Engineer aircraft, rockets, and spacecraft from the ground up. Aerospace engineering is ideal for students captivated by flight, space, and high-performance vehicle design.",
+      "career_paths": ["aerospace-defense", "manufacturing", "research-academia"],
+      "skills": ["physics", "math", "design-cad", "problem-solving"],
+      "problem_areas": ["flight-space", "machines-mechanical"],
+      "interests": ["space-aviation", "cars-machines"],
+      "salary": 131000
+    },
+    {
+      "name": "Chemical Engineering",
+      "description": "Transform raw materials into fuels, medicines, and products through chemical processes. Chemical engineering applies chemistry, physics, and math to energy, biotech, and manufacturing challenges.",
+      "career_paths": ["biotech-pharma", "manufacturing", "power-energy"],
+      "skills": ["chemistry", "math", "physics", "problem-solving"],
+      "problem_areas": ["chemical-processes", "sustainability-environment"],
+      "interests": ["chemistry-materials", "environment-sustainability", "energy"],
+      "salary": 112000
+    },
+    {
+      "name": "Civil Engineering",
+      "description": "Plan and build the infrastructure society relies on — roads, bridges, water systems, and buildings. A cornerstone field for students who want visible, lasting impact on their communities.",
+      "career_paths": ["construction-infrastructure", "manufacturing"],
+      "skills": ["physics", "math", "design-cad", "communication", "problem-solving"],
+      "problem_areas": ["structures-buildings", "sustainability-environment"],
+      "interests": ["buildings-architecture", "environment-sustainability"],
+      "salary": 96000
+    },
+    {
+      "name": "Architectural Engineering",
+      "description": "Bridge architecture and engineering to design safe, efficient, and sustainable buildings. Architectural engineering focuses on the structural, electrical, and mechanical systems that bring buildings to life.",
+      "career_paths": ["construction-infrastructure", "manufacturing"],
+      "skills": ["design-cad", "physics", "math", "communication", "problem-solving"],
+      "problem_areas": ["structures-buildings", "sustainability-environment"],
+      "interests": ["buildings-architecture", "environment-sustainability", "energy"],
+      "salary": 95000
+    },
+    {
+      "name": "Environmental Engineering",
+      "description": "Protect human health and the planet by engineering clean water, clean air, and sustainable systems. Environmental engineering tackles pollution, water resources, and climate challenges with chemistry, biology, and design.",
+      "career_paths": ["construction-infrastructure", "research-academia"],
+      "skills": ["chemistry", "math", "biology", "communication", "problem-solving"],
+      "problem_areas": ["sustainability-environment", "structures-buildings"],
+      "interests": ["environment-sustainability", "nature-agriculture"],
+      "salary": 100000
+    },
+    {
+      "name": "Biomedical Engineering",
+      "description": "Apply engineering to medicine — designing artificial organs, medical imaging, prosthetics, and devices that save lives. Biomedical engineering blends biology, design, and technology to improve human health.",
+      "career_paths": ["healthcare-medical", "biotech-pharma", "research-academia"],
+      "skills": ["biology", "math", "design-cad", "programming", "problem-solving"],
+      "problem_areas": ["human-health", "materials-science"],
+      "interests": ["medicine-health", "technology-computers"],
+      "salary": 101000
+    },
+    {
+      "name": "Biological and Agricultural Engineering",
+      "description": "Engineer solutions for food, water, and living systems — from precision agriculture to bioprocessing and conservation. This field applies biology and design to feed and sustain a growing world.",
+      "career_paths": ["agriculture-food", "biotech-pharma", "construction-infrastructure"],
+      "skills": ["biology", "design-cad", "hands-on", "problem-solving"],
+      "problem_areas": ["sustainability-environment", "machines-mechanical"],
+      "interests": ["nature-agriculture", "environment-sustainability"],
+      "salary": 89000
+    },
+    {
+      "name": "Materials Science and Engineering",
+      "description": "Discover and design the materials behind every technology — metals, polymers, ceramics, and semiconductors. Materials science engineers substances at the atomic level for stronger, lighter, smarter products.",
+      "career_paths": ["materials-development", "manufacturing", "research-academia"],
+      "skills": ["chemistry", "physics", "math", "problem-solving"],
+      "problem_areas": ["materials-science", "chemical-processes"],
+      "interests": ["materials", "chemistry-materials"],
+      "salary": 104000
+    },
+    {
+      "name": "Nuclear Engineering",
+      "description": "Harness the power of the atom for clean energy, medicine, and national security. Nuclear engineering trains students in reactor design, radiation, and energy systems.",
+      "career_paths": ["nuclear-energy", "power-energy", "research-academia"],
+      "skills": ["physics", "math", "chemistry", "problem-solving"],
+      "problem_areas": ["energy-resources", "sustainability-environment"],
+      "interests": ["energy", "materials"],
+      "salary": 125000
+    },
+    {
+      "name": "Ocean Engineering",
+      "description": "Engineer the structures and systems that work on and under the sea — offshore platforms, coastal defenses, and underwater robotics. Ocean engineering combines physics and design to tackle the marine frontier.",
+      "career_paths": ["marine-offshore", "construction-infrastructure", "oil-gas"],
+      "skills": ["physics", "math", "design-cad", "problem-solving"],
+      "problem_areas": ["ocean-coastal", "structures-buildings"],
+      "interests": ["ocean-marine", "environment-sustainability"],
+      "salary": 97000
+    },
+    {
+      "name": "Petroleum Engineering",
+      "description": "Find and produce the energy that powers the world — designing the wells and methods that extract oil and gas safely and efficiently. Petroleum engineering offers strong industry demand and some of the highest pay in the field.",
+      "career_paths": ["oil-gas", "power-energy", "manufacturing"],
+      "skills": ["physics", "math", "chemistry", "problem-solving"],
+      "problem_areas": ["energy-resources", "chemical-processes"],
+      "interests": ["energy", "materials"],
       "salary": 136000
     },
-      
     {
-        "name": "Mechanical Engineering",
-        "description": "Design and build everything that moves — engines, robots, machines, and vehicles. One of A&M's largest and most versatile engineering majors, blending physics, design, and hands-on problem solving.",
-        "career_paths": ["manufacturing", "robotics-automation", "aerospace-defense"],
-        "skills": ["physics", "math", "design-cad", "hands-on", "problem-solving"],
-        "problem_areas": ["machines-mechanical", "automation-control"],
-        "interests": ["cars-machines", "robotics", "energy"],
-        "salary": 72000
+      "name": "Industrial Engineering",
+      "description": "Make complex systems run better — optimizing factories, supply chains, hospitals, and logistics for speed, quality, and cost. Industrial engineering uses data, math, and people skills to eliminate waste everywhere.",
+      "career_paths": ["systems-optimization", "manufacturing", "data-ml"],
+      "skills": ["math", "data-analysis", "communication", "problem-solving"],
+      "problem_areas": ["efficiency-systems", "automation-control"],
+      "interests": ["business-logistics", "data-statistics"],
+      "salary": 99000
     },
     {
-        "name": "Electrical Engineering",
-        "description": "Work with circuits, power systems, signals, and electronics that run today's devices and grids. Aggie EE students combine math, physics, and programming to design the electrical backbone of modern life.",
-        "career_paths": ["power-energy", "robotics-automation", "research-academia"],
-        "skills": ["circuits", "math", "physics", "programming", "problem-solving"],
-        "problem_areas": ["electrical-systems", "automation-control"],
-        "interests": ["electronics-gadgets", "energy", "robotics", "technology-computers"],
-        "salary": 75000
+      "name": "Interdisciplinary Engineering",
+      "description": "Design your own engineering path across disciplines — combining mechanical, biomedical, materials, and more to solve problems that don't fit one box. Ideal for versatile students who want flexibility and breadth.",
+      "career_paths": ["research-academia", "manufacturing", "healthcare-medical"],
+      "skills": ["design-cad", "math", "problem-solving", "communication", "hands-on"],
+      "problem_areas": ["machines-mechanical", "materials-science"],
+      "interests": ["technology-computers", "materials"],
+      "salary": 100000
     },
     {
-        "name": "Aerospace Engineering",
-        "description": "Engineer aircraft, rockets, and spacecraft from the ground up. A&M's Aerospace program is a national leader, ideal for students captivated by flight, space, and high-performance vehicle design.",
-        "career_paths": ["aerospace-defense", "manufacturing", "research-academia"],
-        "skills": ["physics", "math", "design-cad", "problem-solving"],
-        "problem_areas": ["flight-space", "machines-mechanical"],
-        "interests": ["space-aviation", "cars-machines"],
-        "salary": 74000
+      "name": "Electronic Systems Engineering Technology",
+      "description": "Apply electronics and embedded systems hands-on — building, testing, and maintaining the hardware behind automation, instrumentation, and smart devices. A practical, lab-heavy path for students who love working with real systems.",
+      "career_paths": ["hardware-dev", "manufacturing", "robotics-automation"],
+      "skills": ["circuits", "hands-on", "programming", "problem-solving"],
+      "problem_areas": ["electrical-systems", "automation-control"],
+      "interests": ["electronics-gadgets", "robotics", "technology-computers"],
+      "salary": 73000
     },
     {
-        "name": "Chemical Engineering",
-        "description": "Transform raw materials into fuels, medicines, and products through chemical processes. Aggie ChemE students apply chemistry, physics, and math to energy, biotech, and manufacturing challenges.",
-        "career_paths": ["biotech-pharma", "manufacturing", "power-energy"],
-        "skills": ["chemistry", "math", "physics", "problem-solving"],
-        "problem_areas": ["chemical-processes", "sustainability-environment"],
-        "interests": ["chemistry-materials", "environment-sustainability", "energy"],
-        "salary": 78000
+      "name": "Manufacturing and Mechanical Engineering Technology",
+      "description": "Turn designs into real products — running the machines, processes, and production lines of modern manufacturing. A hands-on path for students who want to build things and make factories run efficiently.",
+      "career_paths": ["manufacturing", "robotics-automation", "systems-optimization"],
+      "skills": ["hands-on", "design-cad", "problem-solving"],
+      "problem_areas": ["machines-mechanical", "efficiency-systems"],
+      "interests": ["cars-machines", "materials"],
+      "salary": 64000
     },
     {
-        "name": "Civil Engineering",
-        "description": "Plan and build the infrastructure society relies on — roads, bridges, water systems, and buildings. A cornerstone Aggie major for students who want visible, lasting impact on their communities.",
-        "career_paths": ["construction-infrastructure", "manufacturing"],
-        "skills": ["physics", "math", "design-cad", "communication", "problem-solving"],
-        "problem_areas": ["structures-buildings", "sustainability-environment"],
-        "interests": ["buildings-architecture", "environment-sustainability"],
-        "salary": 65000
+      "name": "Multidisciplinary Engineering Technology",
+      "description": "Combine electronics, mechanics, and software into mechatronic systems, or specialize in marine technology or STEM education. A flexible, hands-on technology degree for students who want broad, applied engineering skills.",
+      "career_paths": ["manufacturing", "robotics-automation", "systems-optimization"],
+      "skills": ["hands-on", "circuits", "design-cad", "communication", "problem-solving"],
+      "problem_areas": ["machines-mechanical", "electrical-systems"],
+      "interests": ["robotics", "electronics-gadgets"],
+      "salary": 65000
     },
     {
-        "name": "Architectural Engineering",
-        "description": "Bridge architecture and engineering to design safe, efficient, and sustainable buildings. Aggie ArchE students focus on the structural, electrical, and mechanical systems that bring buildings to life.",
-        "career_paths": ["construction-infrastructure", "manufacturing"],
-        "skills": ["design-cad", "physics", "math", "communication", "problem-solving"],
-        "problem_areas": ["structures-buildings", "sustainability-environment"],
-        "interests": ["buildings-architecture", "environment-sustainability", "energy"],
-        "salary": 66000
+      "name": "Industrial Distribution",
+      "description": "Blend engineering know-how with business — managing the supply chains, sales, and logistics that move technical products to market. A unique field for students who like technology, people, and the business side of industry.",
+      "career_paths": ["systems-optimization", "manufacturing"],
+      "skills": ["communication", "data-analysis", "problem-solving"],
+      "problem_areas": ["efficiency-systems"],
+      "interests": ["business-logistics", "data-statistics"],
+      "salary": 90000
     }
 ]

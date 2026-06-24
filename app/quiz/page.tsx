@@ -7,7 +7,7 @@ const majors = majorsData as Major[];
 
 export default function QuizPage() {
   return (
-    <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-10 sm:py-16">
+    <main className="w-full flex-1 px-5 py-14 sm:px-10 sm:py-20 lg:px-[4vw] lg:py-28">
       <header className="mb-8 space-y-2 text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
           Texas A&amp;M University

@@ -9,11 +9,13 @@ import type { Question } from "./types";
 // these dimensions that triangulates the best fit; several majors share any
 // given dimension, and the combination is what separates them.
 //
-// The digital dimensions (data, software, hardware) are intentionally kept to
-// the minimum needed to separate Computer Science / Data Engineering /
-// Computer Engineering from one another, so the question set isn't skewed
-// toward computing. The physical, structural, materials, energy and
-// environmental dimensions carry the bulk of the quiz.
+// This set spans the full College of Engineering — all 22 undergraduate
+// programs, from Computer Science to Petroleum to the Engineering Technology
+// and Industrial Distribution degrees. The digital dimensions (software,
+// data, hardware) are kept to the minimum needed to separate Computer
+// Science / Data Engineering / Computer Engineering, so the quiz isn't skewed
+// toward computing; the physical, life-science, materials, energy, marine,
+// environmental and systems dimensions carry the rest.
 //
 // A few tags (hardware-systems, embedded-systems, electronics) are the
 // non-canonical tags Computer Engineering carries in majors.json, included so
@@ -30,11 +32,11 @@ export const LIVE_QUESTIONS: Question[] = [
     id: "q-data",
     statement: "I'm drawn to finding patterns and meaning in data and information.",
     category: "problem_areas",
-    tags: ["data-analysis", "data-patterns", "data-statistics"],
+    tags: ["data-analysis", "data-patterns", "data-statistics", "data-ml"],
   },
   {
     id: "q-circuits",
-    statement: "I like understanding how electricity and electronic devices work.",
+    statement: "I like understanding how electricity, circuits, and electronic devices work.",
     category: "problem_areas",
     tags: ["circuits", "electrical-systems", "electronics-gadgets", "electronics"],
   },
@@ -46,41 +48,43 @@ export const LIVE_QUESTIONS: Question[] = [
     tags: ["hardware-systems", "embedded-systems", "hardware-dev", "electronics"],
   },
   {
-    id: "q-build-hands",
-    statement: "I learn best by building, testing, and working with my hands.",
-    category: "skills",
-    tags: ["hands-on", "machines-mechanical", "manufacturing"],
-  },
-  {
-    id: "q-machines",
-    statement: "I'm curious about how machines and moving parts actually work.",
-    category: "interests",
-    tags: ["machines-mechanical", "cars-machines", "robotics-automation"],
-  },
-  {
-    id: "q-motion",
+    id: "q-machines-hands",
     statement:
-      "I'm drawn to vehicles and the challenge of motion, flight, and transportation.",
-    category: "interests",
-    tags: ["aerospace-defense", "flight-space", "space-aviation", "cars-machines"],
+      "I'm curious how machines work, and I learn best by building and tinkering with my hands.",
+    category: "skills",
+    tags: ["hands-on", "machines-mechanical", "manufacturing", "cars-machines"],
   },
   {
-    id: "q-materials",
-    statement: "I'm fascinated by materials and how substances react and transform.",
+    id: "q-flight",
+    statement:
+      "I'm drawn to flight, space, and the challenge of high-performance vehicles.",
+    category: "interests",
+    tags: ["aerospace-defense", "flight-space", "space-aviation"],
+  },
+  {
+    id: "q-chemistry",
+    statement: "I'm fascinated by chemistry and how substances react and transform.",
     category: "interests",
     tags: ["chemistry", "chemistry-materials", "chemical-processes", "biotech-pharma"],
   },
   {
-    id: "q-physics",
-    statement: "I like using the laws of physics to explain how the world behaves.",
-    category: "skills",
-    tags: ["physics", "math"],
+    id: "q-materials",
+    statement:
+      "I'm curious how the materials around us — metals, polymers, ceramics — are engineered.",
+    category: "problem_areas",
+    tags: ["materials-science", "materials", "materials-development"],
   },
   {
-    id: "q-natural",
-    statement: "I enjoy understanding how the natural and physical world works.",
-    category: "problem_areas",
-    tags: ["physics", "chemistry", "chemistry-materials"],
+    id: "q-bio",
+    statement: "I'm interested in biology, medicine, and how the human body works.",
+    category: "skills",
+    tags: ["biology", "human-health", "medicine-health", "healthcare-medical"],
+  },
+  {
+    id: "q-physics",
+    statement: "I like using the laws of physics and math to explain how the world behaves.",
+    category: "skills",
+    tags: ["physics", "math"],
   },
   {
     id: "q-structures",
@@ -90,28 +94,30 @@ export const LIVE_QUESTIONS: Question[] = [
     tags: ["structures-buildings", "buildings-architecture", "construction-infrastructure"],
   },
   {
-    id: "q-tangible",
-    statement: "I want my work to produce large, tangible things that people rely on.",
-    category: "career_paths",
-    tags: ["construction-infrastructure", "structures-buildings", "manufacturing"],
+    id: "q-energy",
+    statement: "I'm interested in how we generate, store, and deliver energy and power.",
+    category: "interests",
+    tags: ["energy", "power-energy", "nuclear-energy"],
   },
   {
-    id: "q-energy",
-    statement: "I'm interested in how we generate, store, and use energy.",
-    category: "interests",
-    tags: ["energy", "power-energy"],
+    id: "q-resources",
+    statement:
+      "I'd like to work with natural energy resources like oil, gas, and what lies beneath the earth.",
+    category: "career_paths",
+    tags: ["oil-gas", "energy-resources"],
   },
   {
     id: "q-environment",
-    statement: "I want my work to protect the environment and support sustainability.",
+    statement: "I want my work to protect the environment, water, and the natural world.",
     category: "problem_areas",
     tags: ["sustainability-environment", "environment-sustainability"],
   },
   {
-    id: "q-outdoors",
-    statement: "I'd enjoy work that takes me outdoors and connects me with nature.",
+    id: "q-nature",
+    statement:
+      "I'd enjoy work connected to nature, agriculture, oceans, or the outdoors.",
     category: "career_paths",
-    tags: ["environment-sustainability", "sustainability-environment", "construction-infrastructure"],
+    tags: ["agriculture-food", "nature-agriculture", "ocean-coastal", "ocean-marine", "marine-offshore"],
   },
   {
     id: "q-automation",
@@ -120,10 +126,11 @@ export const LIVE_QUESTIONS: Question[] = [
     tags: ["robotics", "robotics-automation", "automation-control"],
   },
   {
-    id: "q-teamwork",
-    statement: "I enjoy collaborating and communicating closely with a team.",
+    id: "q-systems",
+    statement:
+      "I enjoy organizing people, processes, and logistics to make complex systems run efficiently.",
     category: "skills",
-    tags: ["communication"],
+    tags: ["systems-optimization", "efficiency-systems", "business-logistics", "communication"],
   },
   {
     id: "q-design",
@@ -137,6 +144,38 @@ export const LIVE_QUESTIONS: Question[] = [
       "I'm motivated by research, discovery, and pushing the limits of what's possible.",
     category: "career_paths",
     tags: ["research-academia"],
+  },
+  // Orientation axis (people/systems ↔ things/technical). Added to close the
+  // coverage gap on this axis — without these, Industrial Engineering and
+  // Industrial Distribution rest on a single question. The last one anchors
+  // the "things" pole so disagreement is informative too.
+  {
+    id: "or-team",
+    statement:
+      "I'd rather coordinate a team and keep a project on track than do the technical work alone.",
+    category: "skills",
+    tags: ["communication", "systems-optimization"],
+  },
+  {
+    id: "or-business",
+    statement:
+      "I'm drawn to the business, sales, and customer side of how products get made and sold.",
+    category: "interests",
+    tags: ["business-logistics"],
+  },
+  {
+    id: "or-logistics",
+    statement:
+      "I like optimizing how people, money, and resources flow through a large operation.",
+    category: "problem_areas",
+    tags: ["systems-optimization", "efficiency-systems"],
+  },
+  {
+    id: "or-solo",
+    statement:
+      "I'd rather go deep on one hard technical problem by myself than manage lots of moving people.",
+    category: "skills",
+    tags: ["problem-solving"],
   },
   {
     // Aggie spirit closer — purely for fun. No tags, so the matcher skips it
