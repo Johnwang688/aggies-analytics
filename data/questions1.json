@@ -1,0 +1,87 @@
+[
+  {
+    "id": "q-hands-on",
+    "statement": "I enjoy hands-on and practical learning.",
+    "category": "skills",
+    "tags": ["hands-on"]
+  },
+  {
+    "id": "q-math-science",
+    "statement": "I enjoy advanced mathematics and science.",
+    "category": "skills",
+    "tags": ["math", "physics"]
+  },
+  {
+    "id": "q-teamwork",
+    "statement": "I prefer to work in a team environment.",
+    "category": "skills",
+    "tags": ["communication"]
+  },
+  {
+    "id": "q-impact",
+    "statement": "I want to help make the world a better place and adapt to major changes.",
+    "category": "problem_areas",
+    "tags": ["sustainability-environment", "environment-sustainability"]
+  },
+  {
+    "id": "q-energy",
+    "statement": "I have an interest in energy systems.",
+    "category": "interests",
+    "tags": ["energy", "power-energy"]
+  },
+  {
+    "id": "q-environmental-standards",
+    "statement": "I care about meeting environmental standards and regulations.",
+    "category": "problem_areas",
+    "tags": ["sustainability-environment", "environment-sustainability"]
+  },
+  {
+    "id": "q-simulation-software",
+    "statement": "I know how to (or am willing to learn) technical software to run simulations.",
+    "category": "skills",
+    "tags": ["programming", "design-cad"]
+  },
+  {
+    "id": "q-pressure",
+    "statement": "I can problem solve in high-pressure situations.",
+    "category": "skills",
+    "tags": ["problem-solving"]
+  },
+  {
+    "id": "q-structures",
+    "statement": "I enjoy studying the concept of large structures, buildings, and bridges.",
+    "category": "interests",
+    "tags": ["structures-buildings", "buildings-architecture"]
+  },
+  {
+    "id": "q-anti-desk",
+    "statement": "Working in front of a computer all day would be unbearable.",
+    "category": "problem_areas",
+    "tags": ["hands-on", "structures-buildings", "construction-infrastructure"]
+  },
+  {
+    "id": "q-outdoors",
+    "statement": "Working in a field that is outside and constantly in contact with nature is enjoyable for me.",
+    "category": "career_paths",
+    "tags": ["construction-infrastructure", "environment-sustainability", "sustainability-environment"]
+  },
+  {
+    "id": "q-building-tech",
+    "statement": "I enjoy building physical technologies to solve problems.",
+    "category": "career_paths",
+    "tags": ["hands-on", "robotics-automation", "manufacturing"]
+  },
+  {
+    "id": "q-tamu-spirit",
+    "statement": "TAMU is the best university.",
+    "category": "interests",
+    "tags": [],
+    "options": [
+      { "value": 2, "label": "Strongly Agree" },
+      { "value": 1, "label": "Agree" },
+      { "value": 0, "label": "Absolutely Agree" },
+      { "value": -1, "label": "Definitely Agree" },
+      { "value": -2, "label": "100% Agree" }
+    ]
+  }
+]

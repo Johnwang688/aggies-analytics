@@ -1,0 +1,74 @@
+[
+  {
+    "id": "q-code-algorithms",
+    "statement": "I enjoy solving problems by writing code and algorithms.",
+    "category": "problem_areas",
+    "tags": ["programming", "algorithms-software", "software-dev"]
+  },
+  {
+    "id": "q-data",
+    "statement": "I'm good at analyzing data to find patterns, trends, and statistics.",
+    "category": "skills",
+    "tags": ["data-analysis", "data-patterns", "data-statistics"]
+  },
+  {
+    "id": "q-hardware",
+    "statement": "I want to design computer hardware, chips, or embedded electronic devices.",
+    "category": "career_paths",
+    "tags": ["hardware-systems", "electronics", "embedded-systems", "hardware-dev"]
+  },
+  {
+    "id": "q-hands-on-machines",
+    "statement": "I love building, fixing, and tinkering with physical machines by hand.",
+    "category": "skills",
+    "tags": ["hands-on", "machines-mechanical"]
+  },
+  {
+    "id": "q-circuits",
+    "statement": "I'm fascinated by circuits, electronics, and electrical systems.",
+    "category": "problem_areas",
+    "tags": ["circuits", "electrical-systems", "electronics-gadgets"]
+  },
+  {
+    "id": "q-aerospace",
+    "statement": "Designing aircraft, rockets, or spacecraft excites me.",
+    "category": "interests",
+    "tags": ["space-aviation", "flight-space", "aerospace-defense"]
+  },
+  {
+    "id": "q-chemistry",
+    "statement": "I'm drawn to chemistry — turning raw materials into fuels, medicines, or products.",
+    "category": "interests",
+    "tags": ["chemistry", "chemistry-materials", "chemical-processes", "biotech-pharma"]
+  },
+  {
+    "id": "q-structures",
+    "statement": "I want to design large structures like buildings, bridges, and public infrastructure.",
+    "category": "problem_areas",
+    "tags": ["structures-buildings", "construction-infrastructure", "buildings-architecture"]
+  },
+  {
+    "id": "q-energy",
+    "statement": "I'm passionate about energy systems and power generation.",
+    "category": "interests",
+    "tags": ["energy", "power-energy"]
+  },
+  {
+    "id": "q-robotics",
+    "statement": "I'd love to work on robotics and automated control systems.",
+    "category": "career_paths",
+    "tags": ["robotics", "robotics-automation", "automation-control"]
+  },
+  {
+    "id": "q-physics-math",
+    "statement": "I'm comfortable using advanced physics and math to solve real-world problems.",
+    "category": "skills",
+    "tags": ["physics", "math"]
+  },
+  {
+    "id": "q-design-cad",
+    "statement": "I enjoy creating detailed designs, models, and technical drawings (CAD).",
+    "category": "skills",
+    "tags": ["design-cad"]
+  }
+]

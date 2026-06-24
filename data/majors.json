@@ -1,75 +1,136 @@
 [
+    
     {
-        "name": "Computer Science",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+      "name": "Computer Science",
+      "description": "Build the software, algorithms, and intelligent systems that power modern technology. Computer science students study programming, data structures, algorithms, operating systems, and computing theory — one of the highest-demand fields in the job market.",
+      "career_paths": [
+        "software-dev",
+        "data-ml",
+        "research-academia"
+      ],
+      "skills": [
+        "programming",
+        "math",
+        "data-analysis",
+        "problem-solving"
+      ],
+      "problem_areas": [
+        "algorithms-software",
+        "data-patterns",
+        "automation-control"
+      ],
+      "interests": [
+        "technology-computers",
+        "data-statistics",
+        "robotics"
+      ],
+      "salary": 133000
     },
     {
-        "name": "Data Science",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+      "name": "Data Engineering",
+      "description": "Turn raw data into actionable insight using statistics, machine learning, and computational tools. Data science combines programming, math, and domain knowledge to find patterns and build models that drive real-world decisions — a fast-growing field for analytically minded students.",
+      "career_paths": [
+        "data-ml",
+        "software-dev",
+        "research-academia"
+      ],
+      "skills": [
+        "programming",
+        "math",
+        "data-analysis",
+        "problem-solving"
+      ],
+      "problem_areas": [
+        "data-patterns",
+        "algorithms-software"
+      ],
+      "interests": [
+        "data-statistics",
+        "technology-computers"
+      ],
+      "salary": 113000
     },
+    {
+      "name": "Computer Engineering",
+      "description": "Bridge hardware and software to design complete computing systems — from embedded chips to data centers. Computer engineering covers circuits, computer architecture, operating systems, and hardware-software integration for students who want to build both the physical and digital layers of modern devices.",
+      "career_paths": [
+        "hardware-dev",
+        "software-dev",
+        "embedded-systems",
+        "research-academia"
+      ],
+      "skills": [
+        "programming",
+        "math",
+        "electrical-engineering",
+        "problem-solving",
+        "systems-design"
+      ],
+      "problem_areas": [
+        "algorithms-software",
+        "hardware-systems",
+        "automation-control"
+      ],
+      "interests": [
+        "technology-computers",
+        "robotics",
+        "electronics"
+      ],
+      "salary": 136000
+    },
+      
     {
         "name": "Mechanical Engineering",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+        "description": "Design and build everything that moves — engines, robots, machines, and vehicles. One of A&M's largest and most versatile engineering majors, blending physics, design, and hands-on problem solving.",
+        "career_paths": ["manufacturing", "robotics-automation", "aerospace-defense"],
+        "skills": ["physics", "math", "design-cad", "hands-on", "problem-solving"],
+        "problem_areas": ["machines-mechanical", "automation-control"],
+        "interests": ["cars-machines", "robotics", "energy"],
+        "salary": 72000
     },
     {
         "name": "Electrical Engineering",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+        "description": "Work with circuits, power systems, signals, and electronics that run today's devices and grids. Aggie EE students combine math, physics, and programming to design the electrical backbone of modern life.",
+        "career_paths": ["power-energy", "robotics-automation", "research-academia"],
+        "skills": ["circuits", "math", "physics", "programming", "problem-solving"],
+        "problem_areas": ["electrical-systems", "automation-control"],
+        "interests": ["electronics-gadgets", "energy", "robotics", "technology-computers"],
+        "salary": 75000
     },
     {
         "name": "Aerospace Engineering",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+        "description": "Engineer aircraft, rockets, and spacecraft from the ground up. A&M's Aerospace program is a national leader, ideal for students captivated by flight, space, and high-performance vehicle design.",
+        "career_paths": ["aerospace-defense", "manufacturing", "research-academia"],
+        "skills": ["physics", "math", "design-cad", "problem-solving"],
+        "problem_areas": ["flight-space", "machines-mechanical"],
+        "interests": ["space-aviation", "cars-machines"],
+        "salary": 74000
     },
     {
         "name": "Chemical Engineering",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+        "description": "Transform raw materials into fuels, medicines, and products through chemical processes. Aggie ChemE students apply chemistry, physics, and math to energy, biotech, and manufacturing challenges.",
+        "career_paths": ["biotech-pharma", "manufacturing", "power-energy"],
+        "skills": ["chemistry", "math", "physics", "problem-solving"],
+        "problem_areas": ["chemical-processes", "sustainability-environment"],
+        "interests": ["chemistry-materials", "environment-sustainability", "energy"],
+        "salary": 78000
     },
     {
         "name": "Civil Engineering",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+        "description": "Plan and build the infrastructure society relies on — roads, bridges, water systems, and buildings. A cornerstone Aggie major for students who want visible, lasting impact on their communities.",
+        "career_paths": ["construction-infrastructure", "manufacturing"],
+        "skills": ["physics", "math", "design-cad", "communication", "problem-solving"],
+        "problem_areas": ["structures-buildings", "sustainability-environment"],
+        "interests": ["buildings-architecture", "environment-sustainability"],
+        "salary": 65000
     },
     {
-        "name": "Archetectural Engineering",
-        "description": "",
-        "career_paths": [],
-        "skills": [],
-        "problem_areas": [],
-        "interests": [],
-        "salary": 100000
+        "name": "Architectural Engineering",
+        "description": "Bridge architecture and engineering to design safe, efficient, and sustainable buildings. Aggie ArchE students focus on the structural, electrical, and mechanical systems that bring buildings to life.",
+        "career_paths": ["construction-infrastructure", "manufacturing"],
+        "skills": ["design-cad", "physics", "math", "communication", "problem-solving"],
+        "problem_areas": ["structures-buildings", "sustainability-environment"],
+        "interests": ["buildings-architecture", "environment-sustainability", "energy"],
+        "salary": 66000
     }
-    
 ]
