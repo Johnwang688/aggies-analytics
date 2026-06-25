@@ -37,6 +37,41 @@ export function Landing({ questionCount, majorCount }: LandingProps) {
     { value: "~3", label: "Minutes to finish" },
   ];
 
+  // Headline figures for the Texas A&M College of Engineering. These are
+  // approximate, publicly cited numbers — update them if the college's
+  // published stats change.
+  const programStats: {
+    value: number | string;
+    prefix?: string;
+    suffix?: string;
+    label: string;
+    detail: string;
+  }[] = [
+    {
+      value: 25000,
+      suffix: "+",
+      label: "Engineering students",
+      detail: "One of the largest engineering programs in the nation",
+    },
+    {
+      value: 15,
+      label: "Academic departments",
+      detail: "From aerospace to nuclear and biomedical engineering",
+    },
+    {
+      value: "Top 15",
+      label: "U.S. undergraduate program",
+      detail: "Consistently ranked among public universities (U.S. News)",
+    },
+    {
+      value: 75,
+      prefix: "$",
+      suffix: "k",
+      label: "Median starting salary",
+      detail: "Typical first-year pay for engineering graduates",
+    },
+  ];
+
   const steps = [
     {
       title: "Get comfortable",
@@ -313,6 +348,74 @@ export function Landing({ questionCount, majorCount }: LandingProps) {
             </motion.div>
           </Reveal>
         </MotionCard>
+      </section>
+
+      {/* Program stats — the scale of A&M engineering */}
+      <section className="relative flex min-h-svh w-full flex-col justify-center gap-10 overflow-hidden px-5 py-16 sm:px-10 lg:px-[4vw]">
+        <DriftingOrb
+          className="-right-32 top-10 size-[30rem] bg-primary/15"
+          drift={[0, -32, 0]}
+          rise={[0, 26, 0]}
+          duration={23}
+        />
+
+        <Reveal className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            By the numbers
+          </p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+            A powerhouse engineering program
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground">
+            When you match into a major, you&apos;re joining the Texas A&amp;M
+            College of Engineering — one of the largest and most respected
+            engineering programs in the country.
+          </p>
+        </Reveal>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {programStats.map((stat, i) => (
+            <MotionCard
+              key={stat.label}
+              delay={i * 0.1}
+              className="flex flex-col rounded-2xl border border-white/40 bg-card/50 p-6 shadow-sm backdrop-blur-xl"
+            >
+              <p className="text-5xl font-semibold tracking-tight text-primary">
+                {typeof stat.value === "number" ? (
+                  <CountUp
+                    to={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                  />
+                ) : (
+                  stat.value
+                )}
+              </p>
+              <p className="mt-2 text-sm font-semibold tracking-tight">
+                {stat.label}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">{stat.detail}</p>
+            </MotionCard>
+          ))}
+        </div>
+
+        <Reveal delay={0.2}>
+          <p className="text-xs text-muted-foreground">
+            Figures from the Texas A&amp;M College of Engineering and are
+            approximate.
+          </p>
+          <motion.div
+            className="mt-6 inline-block"
+            whileHover={reduce ? undefined : { scale: 1.03 }}
+            whileTap={reduce ? undefined : { scale: 0.98 }}
+          >
+            <Button
+              size="lg"
+              className="h-12 px-8 text-base"
+              render={<Link href="/quiz">Find your major</Link>}
+            />
+          </motion.div>
+        </Reveal>
       </section>
     </div>
   );

@@ -72,13 +72,29 @@ export function MotionCard({
   );
 }
 
-/** Counts up from 0 to `to` when scrolled into view. */
-export function CountUp({ to, className }: { to: number; className?: string }) {
+/**
+ * Counts up from 0 to `to` when scrolled into view. Optional `prefix`/`suffix`
+ * wrap the number (e.g. "$"/"k"/"+") and large values are comma-grouped.
+ */
+export function CountUp({
+  to,
+  className,
+  prefix = "",
+  suffix = "",
+}: {
+  to: number;
+  className?: string;
+  prefix?: string;
+  suffix?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const reduce = useReducedMotion();
   const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v).toString());
+  const rounded = useTransform(
+    count,
+    (v) => `${prefix}${Math.round(v).toLocaleString("en-US")}${suffix}`,
+  );
 
   useEffect(() => {
     if (!inView) return;

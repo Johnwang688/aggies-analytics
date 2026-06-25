@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Download } from "lucide-react";
 
 import { AnswerSummary } from "@/components/answer-summary";
 import { LikertQuestion } from "@/components/likert-question";
@@ -209,6 +210,18 @@ function AdaptiveResults({
 }) {
   const [showAll, setShowAll] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  async function downloadPdf() {
+    setDownloading(true);
+    try {
+      // jsPDF is browser-only and heavy, so load it on demand.
+      const { generateResultsPdf } = await import("@/lib/pdf");
+      generateResultsPdf(results, answers, answered);
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   const top = results.slice(0, 3);
   // The fun closers carry no tags and don't affect matching, so the headline
@@ -222,7 +235,7 @@ function AdaptiveResults({
 
   return (
     <div className="mx-auto max-w-xl space-y-6">
-      <div className="space-y-1 text-center">
+      <div className="space-y-3 text-center">
         <h2 className="text-2xl font-semibold">Your best-fit majors</h2>
         <p className="text-sm text-muted-foreground">
           Matched from {scoredCount} questions.
@@ -230,6 +243,12 @@ function AdaptiveResults({
             ? ` You leaned toward two directions — ${lanes.join(" and ")} — so we covered both.`
             : ""}
         </p>
+        <div className="flex justify-center">
+          <Button onClick={downloadPdf} disabled={downloading}>
+            <Download className="size-4" />
+            {downloading ? "Preparing PDF…" : "Download results (PDF)"}
+          </Button>
+        </div>
       </div>
 
       <div className="space-y-3">

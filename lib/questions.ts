@@ -198,7 +198,7 @@ export const LIVE_QUESTIONS: Question[] = [
     // Fun closer #2 (question 25). Like the spirit question: no tags, no vector,
     // so it scores nothing for/against any major. Every option just says "yes".
     id: "q-dr-young",
-    statement: "Dr. Jamaal Young is the best professor at TAMU.",
+    statement: "Dr. Young is the best professor at TAMU.",
     category: "interests",
     tags: [],
     options: [
