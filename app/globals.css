@@ -54,7 +54,7 @@
  * white surfaces, and warm-maroon-tinted neutrals throughout.
  */
 :root {
-  --background: oklch(1 0 0);
+  --background: #f4f4f4;
   --foreground: oklch(0.18 0.02 25);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.18 0.02 25);

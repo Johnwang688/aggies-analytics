@@ -2,9 +2,9 @@ import type { Answers, Major, Question } from "./types";
 import {
   MAJOR_VECTORS,
   QUESTION_VECTORS,
+  affinity,
   cosine,
   dot,
-  support,
   type Vec,
 } from "./vectors";
 
@@ -37,7 +37,9 @@ export interface AdaptiveConfig {
 export const DEFAULT_ADAPTIVE: AdaptiveConfig = {
   perRound: 5,
   maxRounds: 4,
-  temperature: 5,
+  // affinity is a correlation in [-1, 1], so the softmax temperature is small
+  // (a 5-unit temp would flatten belief to uniform).
+  temperature: 0.2,
   diversityLambda: 0.5,
 };
 
@@ -48,7 +50,7 @@ export interface BeliefEntry {
   weight: number; // belief, sums to 1 across majors
 }
 
-// Softmax of support → a belief distribution over the majors. Subtracting the
+// Softmax of affinity → a belief distribution over the majors. Subtracting the
 // max keeps exp() stable; temperature controls how sharply belief concentrates.
 export function belief(
   answers: Answers,
@@ -60,7 +62,7 @@ export function belief(
     .map((major) => {
       const vec = MAJOR_VECTORS[major.name];
       if (!vec) return null;
-      return { major, vec, support: support(vec, answers, questions) };
+      return { major, vec, support: affinity(vec, answers, questions) };
     })
     .filter((r): r is Omit<BeliefEntry, "weight"> => r !== null);
 

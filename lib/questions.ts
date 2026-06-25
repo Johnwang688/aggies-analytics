@@ -70,7 +70,7 @@ export const LIVE_QUESTIONS: Question[] = [
   {
     id: "q-materials",
     statement:
-      "I'm curious how the materials around us — metals, polymers, ceramics — are engineered.",
+      "I'm curious how the materials around us, such as metals, polymers, and ceramics, are engineered.",
     category: "problem_areas",
     tags: ["materials-science", "materials", "materials-development"],
   },
@@ -191,6 +191,21 @@ export const LIVE_QUESTIONS: Question[] = [
       { value: 1, label: "Agree" },
       { value: 0, label: "Absolutely Agree" },
       { value: -1, label: "Definitely Agree" },
+      { value: -2, label: "100% Agree" },
+    ],
+  },
+  {
+    // Fun closer #2 (question 25). Like the spirit question: no tags, no vector,
+    // so it scores nothing for/against any major. Every option just says "yes".
+    id: "q-dr-young",
+    statement: "Dr. Jamaal Young is the best professor at TAMU.",
+    category: "interests",
+    tags: [],
+    options: [
+      { value: 2, label: "Absolutely Agree" },
+      { value: 1, label: "Definitely Agree" },
+      { value: 0, label: "Agree" },
+      { value: -1, label: "Strongly Agree" },
       { value: -2, label: "100% Agree" },
     ],
   },

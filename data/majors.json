@@ -1,7 +1,7 @@
 [
     {
       "name": "Computer Science",
-      "description": "Build the software, algorithms, and intelligent systems that power modern technology. Computer science covers programming, data structures, algorithms, operating systems, and computing theory — one of the highest-demand fields in the job market.",
+      "description": "Build the software, algorithms, and intelligent systems that power modern technology. Computer science covers programming, data structures, algorithms, operating systems, and computing theory, and it is one of the highest-demand fields in the job market.",
       "career_paths": ["software-dev", "data-ml", "research-academia"],
       "skills": ["programming", "math", "data-analysis", "problem-solving"],
       "problem_areas": ["algorithms-software", "data-patterns", "automation-control"],
@@ -10,7 +10,7 @@
     },
     {
       "name": "Data Engineering",
-      "description": "Turn raw data into actionable insight using statistics, machine learning, and computational tools. Data engineering combines programming, math, and domain knowledge to find patterns and build the pipelines and models that drive real-world decisions — a fast-growing field for analytically minded students.",
+      "description": "Turn raw data into actionable insight using statistics, machine learning, and computational tools. Data engineering combines programming, math, and domain knowledge to find patterns and build the pipelines and models that drive real-world decisions. It is a fast-growing field for analytically minded students.",
       "career_paths": ["data-ml", "software-dev", "research-academia"],
       "skills": ["programming", "math", "data-analysis", "problem-solving"],
       "problem_areas": ["data-patterns", "algorithms-software"],
@@ -19,7 +19,7 @@
     },
     {
       "name": "Computer Engineering",
-      "description": "Bridge hardware and software to design complete computing systems — from embedded chips to data centers. Computer engineering covers circuits, computer architecture, operating systems, and hardware-software integration for students who want to build both the physical and digital layers of modern devices.",
+      "description": "Bridge hardware and software to design complete computing systems, from embedded chips to data centers. Computer engineering covers circuits, computer architecture, operating systems, and hardware-software integration for students who want to build both the physical and digital layers of modern devices.",
       "career_paths": ["hardware-dev", "software-dev", "embedded-systems", "research-academia"],
       "skills": ["programming", "math", "electrical-engineering", "problem-solving", "systems-design"],
       "problem_areas": ["algorithms-software", "hardware-systems", "automation-control"],
@@ -37,7 +37,7 @@
     },
     {
       "name": "Mechanical Engineering",
-      "description": "Design and build everything that moves — engines, robots, machines, and vehicles. One of the largest and most versatile engineering fields, blending physics, design, and hands-on problem solving.",
+      "description": "Design and build everything that moves, including engines, robots, machines, and vehicles. One of the largest and most versatile engineering fields, blending physics, design, and hands-on problem solving.",
       "career_paths": ["manufacturing", "robotics-automation", "aerospace-defense"],
       "skills": ["physics", "math", "design-cad", "hands-on", "problem-solving"],
       "problem_areas": ["machines-mechanical", "automation-control"],
@@ -64,7 +64,7 @@
     },
     {
       "name": "Civil Engineering",
-      "description": "Plan and build the infrastructure society relies on — roads, bridges, water systems, and buildings. A cornerstone field for students who want visible, lasting impact on their communities.",
+      "description": "Plan and build the infrastructure society relies on, including roads, bridges, water systems, and buildings. A cornerstone field for students who want visible, lasting impact on their communities.",
       "career_paths": ["construction-infrastructure", "manufacturing"],
       "skills": ["physics", "math", "design-cad", "communication", "problem-solving"],
       "problem_areas": ["structures-buildings", "sustainability-environment"],
@@ -91,7 +91,7 @@
     },
     {
       "name": "Biomedical Engineering",
-      "description": "Apply engineering to medicine — designing artificial organs, medical imaging, prosthetics, and devices that save lives. Biomedical engineering blends biology, design, and technology to improve human health.",
+      "description": "Apply engineering to medicine by designing artificial organs, medical imaging, prosthetics, and devices that save lives. Biomedical engineering blends biology, design, and technology to improve human health.",
       "career_paths": ["healthcare-medical", "biotech-pharma", "research-academia"],
       "skills": ["biology", "math", "design-cad", "programming", "problem-solving"],
       "problem_areas": ["human-health", "materials-science"],
@@ -100,7 +100,7 @@
     },
     {
       "name": "Biological and Agricultural Engineering",
-      "description": "Engineer solutions for food, water, and living systems — from precision agriculture to bioprocessing and conservation. This field applies biology and design to feed and sustain a growing world.",
+      "description": "Engineer solutions for food, water, and living systems, from precision agriculture to bioprocessing and conservation. This field applies biology and design to feed and sustain a growing world.",
       "career_paths": ["agriculture-food", "biotech-pharma", "construction-infrastructure"],
       "skills": ["biology", "design-cad", "hands-on", "problem-solving"],
       "problem_areas": ["sustainability-environment", "machines-mechanical"],
@@ -109,7 +109,7 @@
     },
     {
       "name": "Materials Science and Engineering",
-      "description": "Discover and design the materials behind every technology — metals, polymers, ceramics, and semiconductors. Materials science engineers substances at the atomic level for stronger, lighter, smarter products.",
+      "description": "Discover and design the materials behind every technology, including metals, polymers, ceramics, and semiconductors. Materials science engineers substances at the atomic level for stronger, lighter, smarter products.",
       "career_paths": ["materials-development", "manufacturing", "research-academia"],
       "skills": ["chemistry", "physics", "math", "problem-solving"],
       "problem_areas": ["materials-science", "chemical-processes"],
@@ -127,7 +127,7 @@
     },
     {
       "name": "Ocean Engineering",
-      "description": "Engineer the structures and systems that work on and under the sea — offshore platforms, coastal defenses, and underwater robotics. Ocean engineering combines physics and design to tackle the marine frontier.",
+      "description": "Engineer the structures and systems that work on and under the sea, including offshore platforms, coastal defenses, and underwater robotics. Ocean engineering combines physics and design to tackle the marine frontier.",
       "career_paths": ["marine-offshore", "construction-infrastructure", "oil-gas"],
       "skills": ["physics", "math", "design-cad", "problem-solving"],
       "problem_areas": ["ocean-coastal", "structures-buildings"],
@@ -136,7 +136,7 @@
     },
     {
       "name": "Petroleum Engineering",
-      "description": "Find and produce the energy that powers the world — designing the wells and methods that extract oil and gas safely and efficiently. Petroleum engineering offers strong industry demand and some of the highest pay in the field.",
+      "description": "Find and produce the energy that powers the world by designing the wells and methods that extract oil and gas safely and efficiently. Petroleum engineering offers strong industry demand and some of the highest pay in the field.",
       "career_paths": ["oil-gas", "power-energy", "manufacturing"],
       "skills": ["physics", "math", "chemistry", "problem-solving"],
       "problem_areas": ["energy-resources", "chemical-processes"],
@@ -145,7 +145,7 @@
     },
     {
       "name": "Industrial Engineering",
-      "description": "Make complex systems run better — optimizing factories, supply chains, hospitals, and logistics for speed, quality, and cost. Industrial engineering uses data, math, and people skills to eliminate waste everywhere.",
+      "description": "Make complex systems run better by optimizing factories, supply chains, hospitals, and logistics for speed, quality, and cost. Industrial engineering uses data, math, and people skills to eliminate waste everywhere.",
       "career_paths": ["systems-optimization", "manufacturing", "data-ml"],
       "skills": ["math", "data-analysis", "communication", "problem-solving"],
       "problem_areas": ["efficiency-systems", "automation-control"],
@@ -154,7 +154,7 @@
     },
     {
       "name": "Interdisciplinary Engineering",
-      "description": "Design your own engineering path across disciplines — combining mechanical, biomedical, materials, and more to solve problems that don't fit one box. Ideal for versatile students who want flexibility and breadth.",
+      "description": "Design your own engineering path across disciplines, combining mechanical, biomedical, materials, and more to solve problems that don't fit one box. Ideal for versatile students who want flexibility and breadth.",
       "career_paths": ["research-academia", "manufacturing", "healthcare-medical"],
       "skills": ["design-cad", "math", "problem-solving", "communication", "hands-on"],
       "problem_areas": ["machines-mechanical", "materials-science"],
@@ -163,7 +163,7 @@
     },
     {
       "name": "Electronic Systems Engineering Technology",
-      "description": "Apply electronics and embedded systems hands-on — building, testing, and maintaining the hardware behind automation, instrumentation, and smart devices. A practical, lab-heavy path for students who love working with real systems.",
+      "description": "Apply electronics and embedded systems hands-on by building, testing, and maintaining the hardware behind automation, instrumentation, and smart devices. A practical, lab-heavy path for students who love working with real systems.",
       "career_paths": ["hardware-dev", "manufacturing", "robotics-automation"],
       "skills": ["circuits", "hands-on", "programming", "problem-solving"],
       "problem_areas": ["electrical-systems", "automation-control"],
@@ -172,7 +172,7 @@
     },
     {
       "name": "Manufacturing and Mechanical Engineering Technology",
-      "description": "Turn designs into real products — running the machines, processes, and production lines of modern manufacturing. A hands-on path for students who want to build things and make factories run efficiently.",
+      "description": "Turn designs into real products by running the machines, processes, and production lines of modern manufacturing. A hands-on path for students who want to build things and make factories run efficiently.",
       "career_paths": ["manufacturing", "robotics-automation", "systems-optimization"],
       "skills": ["hands-on", "design-cad", "problem-solving"],
       "problem_areas": ["machines-mechanical", "efficiency-systems"],
@@ -190,7 +190,7 @@
     },
     {
       "name": "Industrial Distribution",
-      "description": "Blend engineering know-how with business — managing the supply chains, sales, and logistics that move technical products to market. A unique field for students who like technology, people, and the business side of industry.",
+      "description": "Blend engineering know-how with business by managing the supply chains, sales, and logistics that move technical products to market. A unique field for students who like technology, people, and the business side of industry.",
       "career_paths": ["systems-optimization", "manufacturing"],
       "skills": ["communication", "data-analysis", "problem-solving"],
       "problem_areas": ["efficiency-systems"],

@@ -1,4 +1,4 @@
-import { MajorMatcher } from "@/components/major-matcher";
+import { AdaptiveMatcher } from "@/components/adaptive-matcher";
 import majorsData from "@/data/majors.json";
 import { LIVE_QUESTIONS } from "@/lib/questions";
 import type { Major } from "@/lib/types";
@@ -21,7 +21,7 @@ export default function QuizPage() {
         </p>
       </header>
 
-      <MajorMatcher questions={LIVE_QUESTIONS} majors={majors} />
+      <AdaptiveMatcher questions={LIVE_QUESTIONS} majors={majors} />
     </main>
   );
 }

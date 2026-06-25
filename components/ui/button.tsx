@@ -44,12 +44,18 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  render,
+  nativeButton,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      render={render}
+      // A `render` element (e.g. a Link → <a>) isn't a native <button>, so opt
+      // out of native button semantics unless the caller says otherwise.
+      nativeButton={nativeButton ?? !render}
       {...props}
     />
   )
