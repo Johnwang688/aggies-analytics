@@ -16,6 +16,7 @@ import {
   top3Stable,
 } from "@/lib/adaptive";
 import { majorExplanation, recommend, type RankedMajor } from "@/lib/vectors";
+import { LIKERT_OPTIONS } from "@/lib/types";
 import type { Answers, LikertValue, Major, Question } from "@/lib/types";
 
 interface AdaptiveMatcherProps {
@@ -107,6 +108,43 @@ export function AdaptiveMatcher({ questions, majors }: AdaptiveMatcherProps) {
     setRounds((r) => r + 1);
     setPrevTop3(curTop3);
   }
+
+  // Keyboard shortcuts: 1-5 pick the answer (Strongly Disagree → Strongly
+  // Agree, by position), ← goes back, → / Enter advance.
+  useEffect(() => {
+    if (showResults || !current) return;
+    const options = current.options ?? LIKERT_OPTIONS;
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      const num = Number(e.key);
+      if (Number.isInteger(num) && num >= 1 && num <= options.length) {
+        e.preventDefault();
+        const value = options[num - 1].value;
+        setAnswers((prev) => ({ ...prev, [current!.id]: value }));
+        return;
+      }
+
+      if (e.key === "ArrowLeft") {
+        if (stepIndex > 0) {
+          e.preventDefault();
+          setStepIndex((i) => Math.max(0, i - 1));
+        }
+        return;
+      }
+
+      if (e.key === "ArrowRight" || e.key === "Enter") {
+        if (answered) {
+          e.preventDefault();
+          advance();
+        }
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [showResults, current, answered, stepIndex, advance]);
 
   function restart() {
     setAnswers({});
@@ -208,8 +246,6 @@ function AdaptiveResults({
   answered: Question[];
   onRestart: () => void;
 }) {
-  const [showAll, setShowAll] = useState(false);
-  const [showAnswers, setShowAnswers] = useState(false);
   const [downloading, setDownloading] = useState(false);
 
   async function downloadPdf() {
@@ -217,7 +253,7 @@ function AdaptiveResults({
     try {
       // jsPDF is browser-only and heavy, so load it on demand.
       const { generateResultsPdf } = await import("@/lib/pdf");
-      generateResultsPdf(results, answers, answered);
+      await generateResultsPdf(results, answers, answered);
     } finally {
       setDownloading(false);
     }
@@ -234,7 +270,7 @@ function AdaptiveResults({
   ) as string[];
 
   return (
-    <div className="mx-auto max-w-xl space-y-6">
+    <div className="space-y-8">
       <div className="space-y-3 text-center">
         <h2 className="text-2xl font-semibold">Your best-fit majors</h2>
         <p className="text-sm text-muted-foreground">
@@ -251,8 +287,15 @@ function AdaptiveResults({
         </div>
       </div>
 
-      <div className="space-y-3">
-        {top.map((r, i) => {
+      {/* Split screen: the three headline picks on the left, the full
+          ranking on the right — together they fill the width. */}
+      <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+        {/* Left: top three */}
+        <div className="space-y-3">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+            Top three matches
+          </h3>
+          {top.map((r, i) => {
           const clauses = majorExplanation(r.major, answers, answered);
           return (
             <Card key={r.major.name}>
@@ -325,63 +368,48 @@ function AdaptiveResults({
             </Card>
           );
         })}
+        </div>
+
+        {/* Right: the full ranking of every major */}
+        <div className="space-y-3">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+            Full ranking
+          </h3>
+          <ol className="space-y-2 rounded-lg border border-border bg-card p-4">
+            {results.map((r, i) => (
+              <li
+                key={r.major.name}
+                className="flex items-center gap-3 text-sm"
+              >
+                <span className="w-6 shrink-0 text-right tabular-nums text-muted-foreground">
+                  {i + 1}
+                </span>
+                <span className="flex-1 truncate">{r.major.name}</span>
+                <div className="hidden h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-muted sm:block">
+                  <div
+                    className="h-full bg-primary"
+                    style={{ width: `${r.score ?? 0}%` }}
+                  />
+                </div>
+                <span className="w-9 shrink-0 text-right tabular-nums text-muted-foreground">
+                  {r.score ?? 0}%
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
 
-      {/* Full ranking, hidden by default */}
-      {results.length > top.length && (
-        <div className="space-y-3">
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() => setShowAll((v) => !v)}
-          >
-            {showAll
-              ? "Hide full ranking"
-              : `See all ${results.length} majors ranked`}
-          </Button>
-          {showAll && (
-            <ol className="space-y-2 rounded-lg border border-border bg-card p-4">
-              {results.map((r, i) => (
-                <li
-                  key={r.major.name}
-                  className="flex items-center gap-3 text-sm"
-                >
-                  <span className="w-6 shrink-0 text-right tabular-nums text-muted-foreground">
-                    {i + 1}
-                  </span>
-                  <span className="flex-1 truncate">{r.major.name}</span>
-                  <div className="hidden h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-muted sm:block">
-                    <div
-                      className="h-full bg-primary"
-                      style={{ width: `${r.score ?? 0}%` }}
-                    />
-                  </div>
-                  <span className="w-9 shrink-0 text-right tabular-nums text-muted-foreground">
-                    {r.score ?? 0}%
-                  </span>
-                </li>
-              ))}
-            </ol>
-          )}
-        </div>
-      )}
-
-      {/* What you answered */}
+      {/* Below the split: the questions and the student's responses */}
       <div className="space-y-3">
-        <Button
-          variant="outline"
-          className="w-full"
-          onClick={() => setShowAnswers((v) => !v)}
-        >
-          {showAnswers ? "Hide your answers" : "See what you answered"}
-        </Button>
-        {showAnswers && (
-          <AnswerSummary questions={answered} answers={answers} />
-        )}
+        <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+          Your questions &amp; responses
+        </h3>
+        <AnswerSummary questions={answered} answers={answers} />
       </div>
 
       <div className="flex justify-center pt-2">
-        <Button variant="outline" onClick={onRestart}>
+        <Button size="lg" className="h-14 px-12 text-lg" onClick={onRestart}>
           Start over
         </Button>
       </div>

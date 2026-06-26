@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Oswald, Geist_Mono } from "next/font/google";
+import { Open_Sans, Oswald, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Body: a clean grotesque close to Texas A&M's brand typeface (Geograph).
-const hankenGrotesk = Hanken_Grotesk({
+// Body: Open Sans — Texas A&M's official brand typeface for body copy.
+const openSans = Open_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-// Headings: condensed collegiate display, evoking the Aggie maroon banners.
+// Headings: Oswald — Texas A&M's official condensed display typeface for
+// headlines and titles.
 const oswald = Oswald({
   variable: "--font-heading",
   subsets: ["latin"],
@@ -20,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aggie Major Matcher",
+  title: "Aggie Engineering Matcher",
   description:
     "Find the Texas A&M engineering major that best fits your skills, interests, and goals.",
 };
@@ -33,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${oswald.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${openSans.variable} ${oswald.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

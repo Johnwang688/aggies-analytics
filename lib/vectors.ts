@@ -30,6 +30,13 @@ export const AXES: Axis[] = [
   { key: "scale", pos: "Micro / molecular", neg: "Macro / large-scale" },
   { key: "orientation", pos: "People / systems", neg: "Things / technical" },
   { key: "mode", pos: "Theory / research", neg: "Hands-on / build & operate" },
+  // Added to separate majors the first five conflate. `impact` pulls
+  // health/environment/public-good majors (Biomedical, Environmental, Civil)
+  // apart from extraction/defense/heavy-industry ones (Petroleum, Aerospace);
+  // `dynamics` separates motion/energy/flow fields (Aerospace, Mechanical,
+  // power) from static structure/form ones (Civil, Architectural, Materials).
+  { key: "impact", pos: "Society / health / planet", neg: "Industry / commerce / resources" },
+  { key: "dynamics", pos: "Dynamic — motion, energy, flow", neg: "Static — structure & form" },
 ];
 
 export const DIM = AXES.length;
@@ -39,33 +46,33 @@ export type Vec = number[]; // always length DIM
 // MAJOR_VECTORS — one coordinate per major, keyed by the exact `name` in
 // data/majors.json so we can join back to the full record.
 //
-//        [ medium , subject , scale , orient , mode ]
-//          dig/+    liv/+     mic/+   ppl/+    thy/+
-//          phy/-    inan/-    mac/-   thg/-    hnd/-
+//        [ medium , subject , scale , orient , mode , impact , dynamics ]
+//          dig/+    liv/+     mic/+   ppl/+    thy/+   soc/+    dyn/+
+//          phy/-    inan/-    mac/-   thg/-    hnd/-   ind/-    stat/-
 // ---------------------------------------------------------------------------
 export const MAJOR_VECTORS: Record<string, Vec> = {
-  "Computer Science": [2.0, -1.5, 0.0, -1.0, 1.5],
-  "Data Engineering": [2.0, -1.0, 0.0, 0.5, 1.0],
-  "Computer Engineering": [1.0, -1.5, 1.0, -1.0, 0.5],
-  "Electrical Engineering": [0.0, -2.0, 1.0, -1.0, 1.0],
-  "Mechanical Engineering": [-1.5, -1.5, 0.0, -0.5, 0.0],
-  "Aerospace Engineering": [-1.5, -2.0, -1.0, -1.0, 0.5],
-  "Chemical Engineering": [-1.0, -0.5, 1.5, -0.5, 0.5],
-  "Civil Engineering": [-1.5, -1.0, -1.5, 0.5, 0.0],
-  "Architectural Engineering": [-1.0, -1.0, -1.5, 0.5, 0.0],
-  "Environmental Engineering": [-1.0, 1.5, -1.0, 0.5, 0.0],
-  "Biomedical Engineering": [0.0, 2.0, 1.0, -0.5, 0.5],
-  "Biological and Agricultural Engineering": [-1.0, 2.0, 0.0, 0.0, -0.5],
-  "Materials Science and Engineering": [-1.0, -1.5, 2.0, -1.5, 1.5],
-  "Nuclear Engineering": [-1.0, -1.5, 1.5, -1.0, 1.0],
-  "Ocean Engineering": [-1.5, -0.5, -1.5, -0.5, 0.0],
-  "Petroleum Engineering": [-1.0, -1.0, -0.5, 0.0, 0.0],
-  "Industrial Engineering": [0.0, -1.0, -1.5, 2.0, 0.0],
-  "Interdisciplinary Engineering": [0.0, 0.0, 0.0, 0.0, 0.5],
-  "Electronic Systems Engineering Technology": [-0.5, -2.0, 0.5, -0.5, -2.0],
-  "Manufacturing and Mechanical Engineering Technology": [-1.5, -1.5, -0.5, 0.0, -2.0],
-  "Multidisciplinary Engineering Technology": [-1.0, -1.5, 0.0, 0.5, -1.5],
-  "Industrial Distribution": [0.0, -1.0, -1.0, 2.0, -1.0],
+  "Computer Science": [2.0, -1.5, 0.0, -1.0, 1.5, 0.0, 0.0],
+  "Data Engineering": [2.0, -1.0, 0.0, 0.5, 1.0, 0.0, 0.0],
+  "Computer Engineering": [1.0, -1.5, 1.0, -1.0, 0.5, -0.5, 0.5],
+  "Electrical Engineering": [0.0, -2.0, 1.0, -1.0, 1.0, 0.0, 1.0],
+  "Mechanical Engineering": [-1.5, -1.5, 0.0, -0.5, -0.5, -0.5, 1.5],
+  "Aerospace Engineering": [-1.5, -1.5, -1.0, -1.0, 1.0, -1.0, 1.5],
+  "Chemical Engineering": [-1.0, -0.5, 1.5, -0.5, 0.5, -0.5, 1.0],
+  "Civil Engineering": [-1.5, -1.0, -2.0, 0.5, -0.5, 1.0, -1.5],
+  "Architectural Engineering": [-1.0, -1.0, -1.5, 0.5, 0.0, 0.5, -1.5],
+  "Environmental Engineering": [-1.0, 1.5, -1.0, 0.5, 0.0, 1.5, 0.5],
+  "Biomedical Engineering": [0.0, 2.0, 1.0, -0.5, 0.5, 1.5, 0.5],
+  "Biological and Agricultural Engineering": [-1.0, 2.0, 0.0, 0.0, -0.5, 1.5, 0.0],
+  "Materials Science and Engineering": [-1.0, -1.5, 2.0, -1.5, 1.5, -0.5, -0.5],
+  "Nuclear Engineering": [-1.0, -1.5, 1.5, -1.0, 1.0, 0.0, 1.5],
+  "Ocean Engineering": [-1.5, -0.5, -1.5, -0.5, 0.0, -0.5, 1.0],
+  "Petroleum Engineering": [-1.0, -1.0, -1.0, -0.5, -0.5, -1.5, 0.5],
+  "Industrial Engineering": [0.0, -1.0, -1.5, 2.0, 0.0, 0.0, -0.5],
+  "Interdisciplinary Engineering": [0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0],
+  "Electronic Systems Engineering Technology": [-0.5, -2.0, 0.5, -0.5, -2.0, -0.5, 0.5],
+  "Manufacturing and Mechanical Engineering Technology": [-1.5, -1.5, -0.5, 0.0, -2.0, -0.5, 0.5],
+  "Multidisciplinary Engineering Technology": [-1.0, -1.5, 0.0, 0.5, -1.5, 0.0, 0.0],
+  "Industrial Distribution": [0.0, -1.0, -1.0, 2.0, -1.0, -0.5, -0.5],
 };
 
 // ---------------------------------------------------------------------------
@@ -75,32 +82,52 @@ export const MAJOR_VECTORS: Record<string, Vec> = {
 // A zero vector (e.g. the spirit question) contributes nothing.
 // ---------------------------------------------------------------------------
 export const QUESTION_VECTORS: Record<string, Vec> = {
-  // medium, subject, scale, orient, mode
-  "q-software": [2.0, 0.0, 0.0, 0.0, 0.5],
-  "q-data": [1.5, 0.0, 0.0, 0.5, 0.5],
-  "q-circuits": [-0.5, -1.0, 1.0, 0.0, 0.0],
-  "q-hardware": [0.5, -1.0, 1.0, 0.0, -0.5],
-  "q-machines-hands": [-1.5, -1.0, 0.0, 0.0, -1.5],
-  "q-flight": [-1.0, -1.5, -1.0, 0.0, 0.5],
-  "q-chemistry": [-0.5, 0.0, 1.5, 0.0, 0.0],
-  "q-materials": [-0.5, -1.0, 2.0, 0.0, 0.5],
-  "q-bio": [0.0, 2.0, 0.5, 0.0, 0.0],
-  "q-physics": [0.5, -0.5, 0.0, 0.0, 1.5],
-  "q-structures": [-1.0, -0.5, -2.0, 0.5, -0.5],
-  "q-energy": [-0.5, -1.5, 0.5, 0.0, 0.0],
-  "q-resources": [-1.0, -1.0, -0.5, 0.0, -0.5],
-  "q-environment": [-0.5, 1.5, -1.0, 0.5, 0.0],
-  "q-nature": [-0.5, 1.5, -1.0, 0.0, -0.5],
-  "q-automation": [0.5, -1.5, 0.5, 0.0, 0.0],
-  "q-systems": [0.0, -1.0, -1.0, 2.0, -0.5],
-  "q-design": [-0.5, 0.0, 0.0, 0.0, 0.5],
-  "q-research": [0.0, 0.0, 0.0, 0.0, 2.0],
+  // medium, subject, scale, orient, mode, impact, dynamics
+  "q-software": [2.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0],
+  "q-data": [1.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0],
+  "q-circuits": [-0.5, -1.0, 1.0, 0.0, 0.0, 0.0, 0.5],
+  "q-hardware": [0.5, -1.0, 1.0, 0.0, -0.5, 0.0, 0.5],
+  "q-machines-hands": [-1.5, -1.0, 0.0, 0.0, -1.5, 0.0, 1.0],
+  "q-flight": [-1.0, -1.5, -1.0, 0.0, 0.5, -0.5, 1.0],
+  "q-chemistry": [-0.5, 0.0, 1.5, 0.0, 0.0, 0.0, 0.5],
+  "q-materials": [-0.5, -1.0, 2.0, 0.0, 0.5, 0.0, -0.5],
+  "q-bio": [0.0, 2.0, 0.5, 0.0, 0.0, 0.5, 0.0],
+  "q-physics": [0.5, -0.5, 0.0, 0.0, 1.5, 0.0, 0.0],
+  "q-structures": [-1.0, -0.5, -2.0, 0.5, -0.5, 0.0, -1.5],
+  "q-energy": [-0.5, -1.5, 0.5, 0.0, 0.0, 0.0, 0.5],
+  "q-resources": [-1.0, -1.0, -0.5, 0.0, -0.5, -2.0, 0.5],
+  "q-environment": [-0.5, 1.5, -1.0, 0.5, 0.0, 1.5, 0.0],
+  "q-nature": [-0.5, 1.5, -1.0, 0.0, -0.5, 1.0, 0.0],
+  "q-automation": [0.5, -1.5, 0.5, 0.0, 0.0, 0.0, 0.5],
+  "q-systems": [0.0, -1.0, -1.0, 2.0, -0.5, -0.5, -0.5],
+  "q-design": [-0.5, 0.0, 0.0, 0.0, 0.5, 0.0, -0.5],
+  "q-research": [0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0],
   // Orientation-axis questions (people/systems ↔ things/technical).
-  "or-team": [0.0, 0.0, 0.0, 2.0, -0.5],
-  "or-business": [0.0, -0.5, 0.0, 1.5, -1.0],
-  "or-logistics": [0.0, -0.5, -1.0, 1.5, 0.0],
-  "or-solo": [0.0, 0.0, 0.5, -2.0, 0.5],
-  "q-tamu-spirit": [0.0, 0.0, 0.0, 0.0, 0.0],
+  "or-team": [0.0, 0.0, 0.0, 2.0, -0.5, 0.0, 0.0],
+  "or-business": [0.0, -0.5, 0.0, 1.5, -1.0, -0.5, 0.0],
+  "or-logistics": [0.0, -0.5, -1.0, 1.5, 0.0, -0.5, 0.0],
+  "or-solo": [0.0, 0.0, 0.5, -2.0, 0.5, 0.0, 0.0],
+  // Impact-axis & life-science questions (health / environment ↔ industry).
+  "q-med-devices": [0.0, 1.5, 1.0, -0.5, 0.5, 1.5, 0.5],
+  "q-health": [0.0, 2.0, 0.5, 0.0, 0.5, 1.5, 0.0],
+  "q-cells": [0.0, 2.0, 1.5, -0.5, 1.0, 1.0, 0.0],
+  "q-agri": [-0.5, 2.0, -0.5, 0.0, -0.5, 1.0, 0.0],
+  // Energy-production questions (clean power ↔ fossil/extraction).
+  "q-energy-climate": [-0.5, 0.0, 0.0, 0.5, 0.5, 1.0, 0.5],
+  "q-clean-power": [-0.5, -0.5, 0.0, 0.0, 0.5, 1.0, 1.0],
+  "q-grid": [0.0, -1.0, 0.0, 0.5, 0.0, 0.0, 0.5],
+  // Discriminators / axis anchors — only surface their majors when endorsed.
+  "q-ocean": [-1.0, -0.5, -1.5, -0.5, 0.0, -0.5, 1.0],
+  "q-heavy-industry": [-0.5, -0.5, -0.5, 0.0, -0.5, -2.0, 0.5],
+  "q-dynamic": [-1.0, -1.0, 0.0, -0.5, 0.0, -0.5, 2.0],
+  "q-static": [-0.5, -0.5, -0.5, 0.0, -0.5, 0.5, -2.0],
+  // Values / work-style questions (impact anchor, codes/standards, simulation
+  // software, and the physical pole of the digital↔physical axis).
+  "q-better-world": [0.0, 0.5, 0.0, 0.5, 0.0, 1.5, 0.0],
+  "q-regulations": [-0.5, 0.5, -1.0, 0.5, -0.5, 1.0, -1.0],
+  "q-simulation": [1.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0],
+  "q-not-computer": [-1.5, 0.0, 0.0, 0.0, -0.5, 0.0, 0.5],
+  "q-tamu-spirit": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
 };
 
 // --- small vector helpers ---------------------------------------------------
@@ -176,18 +203,25 @@ function cosineN(a: number[], b: number[]): number {
   return na && nb ? dotN(a, b) / (na * nb) : 0;
 }
 
+// Magnitude exponent for `affinity`. P = 1 is a pure cosine (direction only);
+// P < 1 also rewards a major whose signature aligns *strongly in magnitude*, so
+// a committed specialist (Civil, peaked on macro-scale) wins over its blander
+// look-alike (Architectural) instead of losing the cosine tiebreak. Pushing P
+// below ~0.8 reintroduces raw-norm dominance — the original `support` failure
+// where Aerospace/Materials swamp everyone. 0.85 is the validated balance: it
+// keeps every major recoverable while cutting the over-show of bland neighbors.
+const AFFINITY_P = 0.85;
+
 // ---------------------------------------------------------------------------
-// affinity — the ranking metric. Correlation between how the student answered
-// and how this major "would" answer (its expected agreement = direction · major
-// position) across the answered questions.
-//
-// This is magnitude-FREE (a cosine), which `support` was not: support is a raw
-// dot product, so large-norm majors (Materials, Nuclear) systematically
-// out-scored everyone and broke nearest-neighbor adjacency. Correlation fixes
-// that — a student who answers like a major's profile matches that major and
-// its geometric neighbors, for every major in the catalog. It also handles
-// multiple interests on its own: orthogonal interests (bio + CS) surface as two
-// separate best-fits, while axis-conflicts surface the real bridge majors.
+// affinity — the ranking metric. How well a major "explains" the student's
+// answers, scored as  dot(answers, signature) / (‖answers‖ · ‖signature‖^P),
+// where signature[i] = direction_i · major position. At P = 1 this is a plain
+// correlation (magnitude-free); the fractional P keeps the correlation's good
+// properties — neighbors come along for free, orthogonal interests surface
+// separately — while letting a major that the student matches *confidently*
+// outrank a milder neighbor that merely predicts ambivalence. `support` (a raw
+// dot) over-rewarded big vectors; pure cosine under-rewarded committed ones;
+// this is the middle ground.
 // ---------------------------------------------------------------------------
 export function affinity(
   majorVec: Vec,
@@ -203,7 +237,11 @@ export function affinity(
     a.push(ans);
     sig.push(dot(dir, majorVec));
   }
-  return a.length === 0 ? 0 : cosineN(a, sig);
+  if (a.length === 0) return 0;
+  const na = Math.sqrt(dotN(a, a));
+  const ns = Math.sqrt(dotN(sig, sig));
+  if (na === 0 || ns === 0) return 0;
+  return dotN(a, sig) / na / Math.pow(ns, AFFINITY_P);
 }
 
 export interface RankedMajor {
@@ -245,8 +283,9 @@ export function rankMajors(
 // ---------------------------------------------------------------------------
 
 // Endorsed questions whose best-fit majors land within this distance of each
-// other join the same lane.
-const LANE_MERGE_DIST = 1.6;
+// other join the same lane. Scaled up from the 5-axis era (~1.6) since the two
+// added axes stretch inter-major distances.
+const LANE_MERGE_DIST = 1.9;
 // A lane needs at least this much summed agreement to count (keeps a single
 // stray answer from spawning a spurious lane).
 const MIN_LANE_MASS = 3;

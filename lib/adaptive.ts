@@ -37,8 +37,8 @@ export interface AdaptiveConfig {
 export const DEFAULT_ADAPTIVE: AdaptiveConfig = {
   perRound: 5,
   maxRounds: 4,
-  // affinity is a correlation in [-1, 1], so the softmax temperature is small
-  // (a 5-unit temp would flatten belief to uniform).
+  // affinity is a magnitude-aware correlation (roughly [-1.5, 1.5]); the softmax
+  // temperature stays small so belief still concentrates on the leaders.
   temperature: 0.2,
   diversityLambda: 0.5,
 };

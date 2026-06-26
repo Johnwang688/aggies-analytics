@@ -25,6 +25,65 @@ import {
 // the device, so we build straight from the in-memory results + answers.
 // ---------------------------------------------------------------------------
 
+// Texas A&M brand fonts, embedded so the PDF matches the web app:
+//   Open Sans — body copy;  Oswald — headings/titles.
+// The TTFs are self-hosted under /public/fonts, so generating a PDF never
+// reaches out to a third party (the quiz stays on-device).
+const SANS = "OpenSans";
+const HEAD = "Oswald";
+
+const FONT_FILES = {
+  "OpenSans-Regular.ttf": {
+    url: "/fonts/open-sans-v44-latin-regular.ttf",
+    family: SANS,
+    style: "normal",
+  },
+  "OpenSans-Bold.ttf": {
+    url: "/fonts/open-sans-v44-latin-700.ttf",
+    family: SANS,
+    style: "bold",
+  },
+  "Oswald-SemiBold.ttf": {
+    url: "/fonts/oswald-v57-latin-600.ttf",
+    family: HEAD,
+    style: "normal",
+  },
+} as const;
+
+// Base64-encoded TTFs, fetched once and reused across exports.
+let fontCache: Record<string, string> | null = null;
+
+function toBase64(buf: ArrayBuffer): string {
+  const bytes = new Uint8Array(buf);
+  let binary = "";
+  const CHUNK = 0x8000; // chunk to stay within String.fromCharCode arg limits
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+  }
+  return btoa(binary);
+}
+
+async function loadFonts(): Promise<Record<string, string>> {
+  if (fontCache) return fontCache;
+  const entries = await Promise.all(
+    Object.entries(FONT_FILES).map(async ([vfsName, { url }]) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to load font ${url}`);
+      return [vfsName, toBase64(await res.arrayBuffer())] as const;
+    }),
+  );
+  fontCache = Object.fromEntries(entries);
+  return fontCache;
+}
+
+// Register the embedded TTFs onto a jsPDF instance (VFS is per-document).
+function registerFonts(doc: jsPDF, fonts: Record<string, string>) {
+  for (const [vfsName, { family, style }] of Object.entries(FONT_FILES)) {
+    doc.addFileToVFS(vfsName, fonts[vfsName]);
+    doc.addFont(vfsName, family, style);
+  }
+}
+
 // Aggie Maroon (#500000) — the brand primary, reused from globals.css.
 const MAROON: [number, number, number] = [80, 0, 0];
 const INK: [number, number, number] = [30, 25, 25];
@@ -69,12 +128,13 @@ function answerLabel(q: Question, value: number | undefined): string {
   return opts.find((o) => o.value === value)?.label ?? "—";
 }
 
-export function generateResultsPdf(
+export async function generateResultsPdf(
   results: RankedMajor[],
   answers: Answers,
   answered: Question[],
-): void {
+): Promise<void> {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
+  registerFonts(doc, await loadFonts());
   let y = MARGIN;
 
   const setColor = (c: [number, number, number]) =>
@@ -97,17 +157,18 @@ export function generateResultsPdf(
     doc.rect(0, 0, PAGE_W, 4, "F");
     y = MARGIN;
     setColor(MAROON);
-    doc.setFont("helvetica", "bold");
+    doc.setFont(HEAD, "normal");
     doc.setFontSize(9);
-    doc.text("AGGIE MAJOR MATCHER", MARGIN, y);
+    doc.text("AGGIE ENGINEERING MATCHER", MARGIN, y);
     y += 8;
     setColor(INK);
+    doc.setFont(HEAD, "normal");
     doc.setFontSize(20);
     doc.text(title, MARGIN, y);
     y += 7;
     if (subtitle) {
       setColor(MUTED);
-      doc.setFont("helvetica", "normal");
+      doc.setFont(SANS, "normal");
       doc.setFontSize(10);
       const lines = doc.splitTextToSize(subtitle, CONTENT_W);
       doc.text(lines, MARGIN, y);
@@ -136,7 +197,7 @@ export function generateResultsPdf(
       width = CONTENT_W,
       lineH = 5,
     } = opts;
-    doc.setFont("helvetica", style);
+    doc.setFont(SANS, style);
     doc.setFontSize(size);
     setColor(color);
     const lines = doc.splitTextToSize(text, width);
@@ -178,7 +239,7 @@ export function generateResultsPdf(
 
     // Rank + name
     setColor(MUTED);
-    doc.setFont("helvetica", "bold");
+    doc.setFont(SANS, "bold");
     doc.setFontSize(12);
     doc.text(`#${i + 1}`, innerX, y);
     setColor(INK);
@@ -188,7 +249,7 @@ export function generateResultsPdf(
     // Match badge, right-aligned
     const pct = `${r.score ?? 0}% match`;
     doc.setFontSize(10);
-    doc.setFont("helvetica", "bold");
+    doc.setFont(SANS, "bold");
     const badgeW = doc.getTextWidth(pct) + 8;
     const badgeX = MARGIN + CONTENT_W - 6 - badgeW;
     doc.setFillColor(...MAROON);
@@ -241,7 +302,7 @@ export function generateResultsPdf(
     const score = r.score ?? 0;
 
     setColor(MUTED);
-    doc.setFont("helvetica", "normal");
+    doc.setFont(SANS, "normal");
     doc.setFontSize(9);
     doc.text(`${i + 1}`, MARGIN + numW - 2, rowMid, { align: "right" });
 
@@ -267,7 +328,7 @@ export function generateResultsPdf(
     }
 
     setColor(MUTED);
-    doc.setFont("helvetica", "bold");
+    doc.setFont(SANS, "bold");
     doc.setFontSize(9);
     doc.text(`${score}%`, MARGIN + CONTENT_W, rowMid, { align: "right" });
 
@@ -293,7 +354,7 @@ export function generateResultsPdf(
 
     ensure(14);
     setColor(MAROON);
-    doc.setFont("helvetica", "bold");
+    doc.setFont(HEAD, "normal");
     doc.setFontSize(11);
     doc.text(CATEGORY_LABELS[category].toUpperCase(), MARGIN, y);
     y += 6;
@@ -306,12 +367,12 @@ export function generateResultsPdf(
       ensure(stmtLines.length * 5 + 6);
 
       setColor(INK);
-      doc.setFont("helvetica", "normal");
+      doc.setFont(SANS, "normal");
       doc.text(stmtLines, MARGIN, y);
       y += stmtLines.length * 5;
 
       // Answer chip
-      doc.setFont("helvetica", "bold");
+      doc.setFont(SANS, "bold");
       doc.setFontSize(9);
       const chipW = doc.getTextWidth(label) + 7;
       doc.setDrawColor(...HAIRLINE);
@@ -329,10 +390,10 @@ export function generateResultsPdf(
   for (let p = 1; p <= pageCount; p++) {
     doc.setPage(p);
     setColor(MUTED);
-    doc.setFont("helvetica", "normal");
+    doc.setFont(SANS, "normal");
     doc.setFontSize(8);
     doc.text(
-      "Texas A&M University · Aggie Major Matcher",
+      "Texas A&M University · Aggie Engineering Matcher",
       MARGIN,
       PAGE_H - 10,
     );
@@ -341,5 +402,5 @@ export function generateResultsPdf(
     });
   }
 
-  doc.save("aggie-major-matcher-results.pdf");
+  doc.save("aggie-engineering-matcher-results.pdf");
 }

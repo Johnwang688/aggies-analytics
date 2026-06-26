@@ -1,7 +1,9 @@
 import type { Question } from "./types";
 
 // ---------------------------------------------------------------------------
-// LIVE_QUESTIONS — the real student-facing quiz (20 questions).
+// LIVE_QUESTIONS — the real student-facing quiz (38 scored + 2 fun closers).
+// The adaptive engine (lib/adaptive.ts) only ASKS a handful per round, so a
+// larger bank sharpens discrimination without lengthening the quiz.
 //
 // Every question probes a broad *underlying dimension* of an engineer's
 // interests and aptitudes rather than naming a major or its products. No
@@ -176,6 +178,124 @@ export const LIVE_QUESTIONS: Question[] = [
       "I'd rather go deep on one hard technical problem by myself than manage lots of moving people.",
     category: "skills",
     tags: ["problem-solving"],
+  },
+  // Life-science / health dimension. Biomedical, Bio-Ag and Environmental all
+  // crowd the "living" pole; these separate them (devices vs. cells vs. food)
+  // and anchor the new impact (society/health) axis so caring about people
+  // lifts them instead of leaving them tied.
+  {
+    id: "q-med-devices",
+    statement:
+      "I want to design medical devices, prosthetics, or technology that helps patients.",
+    category: "career_paths",
+    tags: ["healthcare-medical", "human-health", "design-cad"],
+  },
+  {
+    id: "q-health",
+    statement: "I'm motivated by improving human health and treating disease.",
+    category: "problem_areas",
+    tags: ["human-health", "medicine-health", "biology"],
+  },
+  {
+    id: "q-cells",
+    statement:
+      "I'm fascinated by engineering at the level of cells, genes, or drugs.",
+    category: "skills",
+    tags: ["biology", "biotech-pharma", "human-health"],
+  },
+  {
+    id: "q-agri",
+    statement:
+      "I'd like to engineer food, crops, or agricultural systems that feed people.",
+    category: "career_paths",
+    tags: ["agriculture-food", "nature-agriculture", "biology"],
+  },
+  // Energy-production dimension. Splits clean/renewable power and the grid from
+  // oil & gas (q-resources), so an energy interest no longer reads as Petroleum.
+  {
+    id: "q-energy-climate",
+    statement: "I want to help solve the world's energy and climate challenges.",
+    category: "problem_areas",
+    tags: ["energy", "sustainability-environment", "power-energy"],
+  },
+  {
+    id: "q-clean-power",
+    statement:
+      "I'm excited about generating clean, renewable power — solar, wind, or nuclear.",
+    category: "career_paths",
+    tags: ["power-energy", "energy", "nuclear-energy"],
+  },
+  {
+    id: "q-grid",
+    statement:
+      "I'd like to work on the electric grid and how power gets delivered to homes and cities.",
+    category: "career_paths",
+    tags: ["power-energy", "electrical-systems", "energy"],
+  },
+  // Discriminators / new-axis anchors. These let a major surface only when the
+  // student genuinely endorses it, instead of riding along on generic answers:
+  // q-ocean owns the marine lane, q-heavy-industry anchors the impact-negative
+  // pole (oil/defense/heavy mfg), and q-dynamic / q-static anchor the dynamics
+  // axis (motion & energy ↔ static structure & form).
+  {
+    id: "q-ocean",
+    statement:
+      "I'm specifically drawn to working on or under the ocean — ships, offshore platforms, coastal systems.",
+    category: "interests",
+    tags: ["ocean-coastal", "marine-offshore", "ocean-marine"],
+  },
+  {
+    id: "q-heavy-industry",
+    statement:
+      "I'd be comfortable working in industries like oil, gas, mining, defense, or heavy manufacturing.",
+    category: "career_paths",
+    tags: ["oil-gas", "manufacturing"],
+  },
+  {
+    id: "q-dynamic",
+    statement:
+      "I'm drawn to fast-moving, high-energy systems — engines, rockets, power, fluids in motion.",
+    category: "interests",
+    tags: ["machines-mechanical", "energy"],
+  },
+  {
+    id: "q-static",
+    statement:
+      "I'd rather design things that are built once and stay put — structures, layouts, and materials.",
+    category: "skills",
+    tags: ["structures-buildings", "design-cad"],
+  },
+  // Values & work-style dimension. q-better-world anchors the impact axis with
+  // no domain bias; q-regulations points the built-environment majors (Civil,
+  // Architectural, Environmental); q-simulation captures computational/analysis
+  // aptitude; q-not-computer anchors the *physical* pole so a student who hates
+  // desk work is pushed toward field/hands-on majors and away from CS/Data.
+  {
+    id: "q-better-world",
+    statement:
+      "I want my work to help make the world a better place.",
+    category: "problem_areas",
+    tags: ["sustainability-environment", "human-health"],
+  },
+  {
+    id: "q-regulations",
+    statement:
+      "I care about meeting environmental standards, codes, and regulations in my work.",
+    category: "problem_areas",
+    tags: ["sustainability-environment", "construction-infrastructure"],
+  },
+  {
+    id: "q-simulation",
+    statement:
+      "I'm comfortable using — or willing to learn — technical software to run simulations and models.",
+    category: "skills",
+    tags: ["design-cad", "data-analysis"],
+  },
+  {
+    id: "q-not-computer",
+    statement: "Working in front of a computer all day would be unbearable for me.",
+    category: "interests",
+    tags: ["hands-on"],
   },
   {
     // Aggie spirit closer — purely for fun. No tags, so the matcher skips it

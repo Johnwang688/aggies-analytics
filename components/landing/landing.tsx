@@ -7,6 +7,7 @@ import { useReducedMotion } from "motion/react";
 import { TamuLogo } from "@/components/tamu-logo";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_ADAPTIVE } from "@/lib/adaptive";
+import { cn } from "@/lib/utils";
 import {
   CountUp,
   DriftingOrb,
@@ -142,7 +143,7 @@ export function Landing({ questionCount, majorCount }: LandingProps) {
           <Link href="/" className="flex items-center gap-2.5">
             <TamuLogo className="size-9" />
             <span className="text-lg font-semibold tracking-tight">
-              Aggie Major Matcher
+              Aggie Engineering Matcher
             </span>
           </Link>
           <motion.div
@@ -424,13 +425,16 @@ export function Landing({ questionCount, majorCount }: LandingProps) {
 /** A glassy macOS browser window showing a sample question, echoing the quiz. */
 function BrowserMockup() {
   const reduce = useReducedMotion();
-  const scale = [
-    { label: "Strongly Disagree", className: "bg-destructive/20" },
-    { label: "Disagree", className: "bg-primary/15" },
-    { label: "Neutral", className: "bg-muted" },
-    { label: "Agree", className: "bg-primary/30" },
-    { label: "Strongly Agree", className: "bg-primary/60" },
+  // Mirrors the real quiz's LIKERT_OPTIONS labels and LikertQuestion layout.
+  const options = [
+    "Strongly Disagree",
+    "Disagree",
+    "Neutral",
+    "Agree",
+    "Strongly Agree",
   ];
+  // The answer the mock student has picked, shown highlighted like the real UI.
+  const selected = 3;
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-foreground/15 bg-card/70 shadow-2xl backdrop-blur-xl">
@@ -446,7 +450,7 @@ function BrowserMockup() {
             <rect x="5" y="11" width="14" height="10" rx="2" />
             <path d="M8 11V7a4 4 0 0 1 8 0v4" />
           </svg>
-          <span className="truncate">aggiemajormatcher.tamu.edu/quiz</span>
+          <span className="truncate">aggie-engineering-matcher.vercel.app/quiz</span>
         </div>
       </div>
 
@@ -454,20 +458,15 @@ function BrowserMockup() {
       <div className="flex flex-1 flex-col justify-center p-6">
         <div className="mb-4 flex items-center gap-2.5">
           <TamuLogo className="size-7" />
-          <div className="leading-tight">
-            <p className="text-sm font-semibold">Aggie Major Matcher</p>
-            <p className="text-xs text-muted-foreground">Created at Texas A&amp;M</p>
-          </div>
+          <p className="text-sm font-semibold">Aggie Engineering Matcher</p>
         </div>
 
-        {/* progress */}
+        {/* progress — matches the real quiz: "Question N" + percentage */}
         <div className="mb-1 flex justify-between text-xs text-muted-foreground">
-          <span>
-            Question {PREVIEW_STEP} of {QUIZ_LENGTH}
-          </span>
+          <span>Question {PREVIEW_STEP}</span>
           <span>{PREVIEW_PCT}%</span>
         </div>
-        <div className="mb-5 h-2 w-full overflow-hidden rounded-full bg-muted">
+        <div className="mb-6 h-2 w-full overflow-hidden rounded-full bg-muted">
           <motion.div
             className="h-full rounded-full bg-primary"
             initial={reduce ? false : { width: 0 }}
@@ -478,31 +477,54 @@ function BrowserMockup() {
           />
         </div>
 
-        <p className="mb-4 text-center text-base font-semibold">
-          How accurately does each statement reflect you?
+        {/* category label, exactly as the live quiz shows it */}
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+          Skills
         </p>
 
-        <div className="mb-5 flex justify-between">
-          {scale.map((s, i) => (
-            <motion.span
-              key={s.label}
-              className={`size-9 rounded-full border border-border ${s.className}`}
-              initial={reduce ? false : { scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                type: "spring",
-                stiffness: 320,
-                damping: 18,
-                delay: 0.7 + i * 0.08,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="rounded-xl border border-white/40 bg-background/60 p-4 text-center text-base backdrop-blur">
-          I&apos;m curious how machines work, and I learn best by building and
-          tinkering with my hands.
+        {/* Question card — mirrors components/likert-question.tsx */}
+        <div className="rounded-lg border border-border bg-card p-5">
+          <p className="mb-5 text-base font-medium leading-snug text-card-foreground">
+            I&apos;m curious how machines work, and I learn best by building and
+            tinkering with my hands.
+          </p>
+          <div className="grid grid-cols-5 gap-2">
+            {options.map((label, i) => {
+              const isSelected = i === selected;
+              return (
+                <motion.div
+                  key={label}
+                  className={cn(
+                    "flex flex-col items-center gap-2 rounded-md border p-2 text-center",
+                    isSelected
+                      ? "border-primary bg-primary/10 font-semibold text-foreground ring-1 ring-primary"
+                      : "border-border text-muted-foreground",
+                  )}
+                  initial={reduce ? false : { scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 320,
+                    damping: 18,
+                    delay: 0.7 + i * 0.08,
+                  }}
+                >
+                  <span
+                    className={cn(
+                      "flex size-4 items-center justify-center rounded-full border",
+                      isSelected ? "border-primary bg-primary" : "border-input",
+                    )}
+                  >
+                    {isSelected && (
+                      <span className="size-2 rounded-full bg-primary-foreground" />
+                    )}
+                  </span>
+                  <span className="text-[10px] leading-tight">{label}</span>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
